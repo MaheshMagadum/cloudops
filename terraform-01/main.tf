@@ -5,7 +5,6 @@ terraform {
             version = "~> 3.0.0"
         }
     }
-
     required_version=">=0.15.0"
 }
 
@@ -13,6 +12,7 @@ provider  "azurerm" {
     features{}
 }
 
+# Define Azure Resources
 resource "azurerm_resource_group" "main" {
     name = "first-tf-rg-centralindia"
     location = "centralindia"
@@ -43,10 +43,13 @@ resource "azurerm_network_interface" "internal" {
  }
 }
 
+# Azure Windows Virtual Machine consuming the Resources
+
 resource "azurerm_windows_virtual_machine" "main" {
   name = "first-tf-vm-in"
   resource_group_name = azurerm_resource_group.main.name
   location = azurerm_resource_group.main.location
+  # Standard_B1s is no more supported, use Standard_B2s
   size = "Standard_B2s"
   admin_username = "user.admin"
   admin_password = ""
