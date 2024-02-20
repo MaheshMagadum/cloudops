@@ -52,7 +52,7 @@ resource "azurerm_windows_virtual_machine" "main" {
   # Standard_B1s is no more supported, use Standard_B2s
   size = "Standard_B2s"
   admin_username = "user.admin"
-  admin_password = ""
+  admin_password = "<password>"
 
   network_interface_ids = [
      azurerm_network_interface.internal.id
