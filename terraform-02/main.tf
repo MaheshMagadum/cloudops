@@ -11,7 +11,7 @@ provider "azurerm" {
   features{}
 }
 
-variable "location" {
-  type = string
-  default = "East US"
+resource "azurerm_resource_group" "rg" {
+  name = "dev-rg"
+  location = var.location
 }
